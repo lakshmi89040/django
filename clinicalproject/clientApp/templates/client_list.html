@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>clients List</h1>
+    <a href="{% url 'client_create' %}" class="btn btn-primary mb-3">Add client</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>disease</th>
+                <th>age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for  client in clients %}
+            <tr>
+                <td>{{ client.name }}</td>
+                <td>{{ client.disease }}</td>
+                <td>{{ client.age }}</td>
+                <td>
+                    <a href="{% url 'client_update' client.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'client_delete' client.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
